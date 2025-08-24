@@ -1,0 +1,72 @@
+{% load static %}
+
+{% block boilerplate %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontAwesomeSBrands:wght@400&display=swap" />
+
+    <script src="https://kit.fontawesome.com/cb792c0850.js" crossorigin="anonymous"></script>
+  </head>
+{% endblock %}
+
+  <body>
+    <div class="signup-login">
+      <div class="signup-box">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="heading"><strong>Signup</strong></div><hr>
+          <br />
+
+          <div class="line"></div>
+          <div class="field">
+            <b>Username</b>
+            <input
+              type="text"
+              required
+              class="inp"
+              placeholder="Enter Your Username"
+              name="fnm"
+            />
+          </div>
+          <br />
+
+          <div class="field">
+            <b>Email</b>
+            <input type="email" required class="inp" placeholder="Enter the Email Id" width=3rem name="email" />
+          </div>
+          <br />
+
+          <div class="field">
+            <b>Password</b>
+            <input type="Password" class="inp" placeholder="Enter Password" name="pwd" required />
+          </div>
+          <br />
+
+          <div class="confirmation">
+            <div class="field">
+              <input type="submit" class="submit-button" value="Signup">
+            </div>
+            <br />
+  
+            <div class="field1">
+              <b>Already have an account?<b>
+              <br />
+              <a class="anc" href="/login">Login</a>
+            </div>
+            <br />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

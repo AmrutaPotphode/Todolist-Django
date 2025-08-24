@@ -1,0 +1,61 @@
+{% load static %}
+
+{% block boilerplate %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontAwesomeSBrands:wght@400&display=swap" />
+
+    <script src="https://kit.fontawesome.com/cb792c0850.js" crossorigin="anonymous"></script>
+  </head>
+{% endblock %}
+
+  <body>
+    <div class="signup-login">
+        <div><h1>Hello {{user}}</h1></div>
+    </div>
+      <div class="signup-box1">
+        <div class="heading"><strong>Get Things ToDo</strong></div>
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <hr>
+        
+        <br />
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="entry">
+            <input type="text" class="inp" name="title" required placeholder="Add Today's Task", value={{obj.title}}>
+            <input type="submit" class="submit-button" value="Update Task">
+          </div>
+          
+        </form>
+
+        {% for todo in res %}
+        <div class ="Todo">
+            <h5>{{todo.srno}}</h5> 
+            <p>{{todo.title}}</p>
+            
+            <div>
+                {% comment %} <a href=""><i class="fa-solid fa-pen-to-square"></i></a> {% endcomment %}
+                <a href="/delete_todo/{{todo.srno}}"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+      </div>
+    </div>
+
+    <script src="{% static 'js/todo.js' %}"></script>
+  </body>
+</html>
